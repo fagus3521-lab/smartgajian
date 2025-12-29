@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart Gajian</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+  --bg: #f3f5f7;
+  --card: #ffffff;
+  --text: #2c2c2c;
+  --muted: #6b7280;
+  --primary: #4f7f96;
+}
+
+body.dark {
+  --bg: #121212;
+  --card: #1e1e1e;
+  --text: #e5e5e5;
+  --muted: #9ca3af;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+}
+
+/* HEADER */
+header {
+  background: var(--primary);
+  color: #fff;
+  padding: 15px 25px;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* TOOLS */
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.tools input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  width: 180px;
+}
+
+.toggle {
+  cursor: pointer;
+  background: #fff;
+  color: #333;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* MAIN */
+main {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+/* CARD */
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.card-content {
+  padding: 18px;
+}
+
+.card h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 12px;
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 25px;
+  color: var(--muted);
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Smart Gajian</div>
+    <div class="tools">
+      <input type="text" id="searchInput" placeholder="Cari artikel...">
+      <div class="toggle" onclick="toggleDark()">Dark Mode</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="articles" id="articleList">
+
+    <!-- ARTIKEL UTAMA -->
+    <div class="card">
+      <a href="article-smart-salary.html">
+        <img src="https://i.imgur.com/e6Pghk6.jpeg" alt="Smart Salary">
+      </a>
+      <div class="card-content">
+        <h3>Smart Salary Management: How to Optimize Your Monthly Income for Long-Term Financial Stability</h3>
+        <p>Strategi mengelola gaji secara cerdas agar keuangan stabil dan berkelanjutan.</p>
+        <a href="article-smart-salary.html">Baca selengkapnya →</a>
+      </div>
+    </div>
+
+    <!-- ARTIKEL PENDUKUNG 1 -->
+    <div class="card">
+      <a href="article-payday-discipline.html">
+        <img src="https://i.imgur.com/qRxivz5.jpeg" alt="Salary Planning">
+      </a>
+      <div class="card-content">
+        <h3>From Payday to Progress: Strategic Salary Planning to Avoid Financial Stress</h3>
+        <p>Perencanaan gaji yang tepat untuk menghindari tekanan finansial.</p>
+        <a href="article-payday-discipline.html">Baca selengkapnya →</a>
+      </div>
+    </div>
+
+    <!-- ARTIKEL PENDUKUNG 2 -->
+    <div class="card">
+      <a href="article-long-term-wealth.html">
+        <img src="https://i.imgur.com/29ZfVZN.jpeg" alt="Budgeting">
+      </a>
+      <div class="card-content">
+        <h3>Smart Use of Monthly Salary: Practical Frameworks for Budgeting, Saving, and Growth</h3>
+        <p>Kerangka praktis mengatur anggaran, menabung, dan bertumbuh.</p>
+        <a href="article-long-term-wealth.html">Baca selengkapnya →</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  © 2025 Smart Gajian. All rights reserved.
+</footer>
+
+<script>
+/* DARK MODE */
+function toggleDark() {
+  document.body.classList.toggle("dark");
+}
+
+/* SEARCH FILTER */
+const searchInput = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".card");
+
+searchInput.addEventListener("keyup", function () {
+  const value = searchInput.value.toLowerCase();
+  cards.forEach(card => {
+    const title = card.querySelector("h3").innerText.toLowerCase();
+    card.style.display = title.includes(value) ? "block" : "none";
+  });
+});
+</script>
+
+</body>
+</html>
